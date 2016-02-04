@@ -122,7 +122,7 @@ exclude: 'yes'
 		// These are called on page load
 
 		// Get data about our products from products.json.
-		$.getJSON( "products.json", function( data ) {
+/*		$.getJSON( "products.json", function( data ) {
 
 			// Write the data into our global variable.
 			SPA.config.products = data;
@@ -134,7 +134,21 @@ exclude: 'yes'
 			$(window).trigger('hashchange');
 			
 		});
+*/		
+		$.ajax( {
+		  url: 'http://restmk1.dev/wp-json/wp/v2/phones',
+		  success: function ( data ) {
+			// Write the data into our global variable.
+			SPA.config.products = data;
 
+			// Call a function to create HTML for all the products.
+			SPA.generateAllProductsHTML(data);
+
+			// Manually trigger a hashchange to start the app.
+			$(window).trigger('hashchange');
+		  },
+		  cache: false
+		} );
 
 		// An event handler with calls the render function on every hashchange.
 		// The render function will show the appropriate content of out page.
