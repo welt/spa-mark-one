@@ -136,7 +136,7 @@ exclude: 'yes'
 		});
 */		
 		$.ajax( {
-		  url: 'http://restmk1.dev/wp-json/wp/v2/phones',
+		  url: 'http://rest.aurac.net/wp-json/wp/v2/phones',
 		  success: function ( data ) {
 			// Write the data into our global variable.
 			SPA.config.products = data;
